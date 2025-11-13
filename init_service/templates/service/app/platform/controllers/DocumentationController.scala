@@ -1,4 +1,4 @@
-package uk.gov.hmrc.$!APP_PACKAGE_NAME!$.controllers
+package uk.gov.hmrc.platform.controllers
 
 import play.api.mvc.{Action, AnyContent, ControllerComponents}
 import controllers.Assets
