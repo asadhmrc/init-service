@@ -1,5 +1,5 @@
 app/controllers/MicroserviceHelloWorldController.scala
-app/controllers/DocumentationController.scala
+app/platform/controllers/DocumentationController.scala
 test/controllers/MicroserviceHelloWorldControllerSpec.scala
 conf/definition.routes
 resources
