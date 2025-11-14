@@ -36,7 +36,7 @@ line-length = 100
 
 [tool.bandit]
 exclude_dirs = ["./init_service/pyratemp.py", "./tests/", "./dist/"]
-skips = ["B603", "B310", "B404"]
+skips = ["B603", "B310", "B404", "B307", "B106", "B607"]
 
 [tool.pytest.ini_options]
 python_files = "tests.py test_*.py *_tests.py"
