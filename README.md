@@ -79,4 +79,28 @@ Increment the version found in pyproject.toml and run:
 
 ```bash
 make publish
-````
+```
+
+## CI/CD Build Process
+
+The build process is managed through Jenkins and is defined in the [build-jobs repository](https://github.com/hmrc/build-jobs/blob/main/jobs/live/platops.groovy#L178).
+
+### Pull Request Build
+
+When a pull request is opened:
+- Runs `make test` to execute unit tests
+
+### Main Branch Build
+
+When a PR is merged to `main`:
+- Runs `make publish` which:
+  1. Runs `make test` to execute unit tests
+  2. Runs `make bandit` for security scanning
+  3. Builds the package (`poetry build`)
+  4. Publishes to Artifactory (`poetry publish`)
+- Extracts version using `poetry version --short`
+- Tags the repository with the version number
+
+The build uses credentials stored in Jenkins under `hmrc-pips-local-writer-token` for Artifactory authentication.
+
+For more details, see the [platops.groovy configuration](https://github.com/hmrc/build-jobs/blob/main/jobs/live/platops.groovy#L178).
